@@ -1,0 +1,14 @@
+{
+  "name": "siraj-make-money-with-machine-learning-midterm-tng-scriptgen",
+  "version": "1.0.0",
+  "description": "Make Money with Machine Learning Course by Siraj Raval - Midterm Assignment: TNG Script Generator",
+  "scripts": {
+    "prep-frontend": "cd ./packages/frontend && ng build && cp -dpR ./dist/frontend/* ../backend/public",
+    "build-docker": "docker build -t siraj-midterm ."
+  },
+  "author": "Ralph Greschner <ralph.greschner@gmail.com> (http://www.ralph-greschner.de)",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.17.0"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "packages/scriptgen/data"]
+	path = packages/scriptgen/data
+	url = https://github.com/rgreschner/siraj-make-money-with-machine-learning-midterm-tng-scriptgen-data.git

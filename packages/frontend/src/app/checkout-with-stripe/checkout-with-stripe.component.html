@@ -1,0 +1,42 @@
+<form novalidate (ngSubmit)="buy()" style="padding: 32px;">
+  <div style="margin-bottom: 16px;">
+    <table class="table">
+      <thead>
+        <th>Amount</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>TNG Script Generation</td>
+        </tr>
+      </tbody>
+    </table>
+    <span>Total Amount due: <em>$0.47</em></span>
+    <hr/>
+    <p >
+      Please enter valid credit card information to place your script generation
+      order.
+    </p>
+    <p style="font-style: italic;">
+      For debugging purposes, enter the credit card number
+      <span class="credit-card-number-example">5555 5555 5555 4444</span>
+      and any validity date plus postal code.
+    </p>
+  </div>
+
+  <ngx-stripe-card
+    [options]="cardOptions"
+    [elementsOptions]="elementsOptions"
+  ></ngx-stripe-card>
+
+  <div class="error">
+      {{error?.message}}
+    </div>
+
+  <div style="margin-top: 16px;">
+    <button class="btn btn-primary btn-large" type="submit">
+      Order &amp; Pay
+    </button>
+  </div>
+</form>

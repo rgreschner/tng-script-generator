@@ -1,0 +1,16 @@
+<div class="container" *ngIf="isAuthenticated">
+  <ngb-alert type="success" [dismissible]="false">
+    <h1>
+      Authentication was successful!
+    </h1>
+  </ngb-alert>
+  You will be redirected shortly...
+</div>
+<div class="container" *ngIf="!isAuthenticated">
+  <ngb-alert type="danger" [dismissible]="false">
+    <h1>
+      Authentication failed!
+    </h1>
+  </ngb-alert>
+  Please try again!
+</div>

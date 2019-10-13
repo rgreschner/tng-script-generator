@@ -1,0 +1,33 @@
+<div *ngIf="!!generationResult && generationResult.error">
+  <ngb-alert type="danger" [dismissible]="false">
+    <h1>
+      Script Generation Error
+    </h1>
+    {{ generationResult?.error?.message }}
+  </ngb-alert>
+</div>
+<textarea readonly style="min-width: 640px; min-height: 480px;">
+        {{ generationResult?.scriptText }}
+      </textarea
+>
+<div>
+  <div class="btn-group" role="group">
+    <button
+      class="btn btn-primary btn-large"
+      (click)="generate()"
+      [disabled]="isDisabled"
+    >
+      Generate
+    </button>
+    <button
+      class="btn btn-primary btn-large"
+      (click)="loadRecentlyGenerated()"
+      [disabled]="isDisabled"
+    >
+      Load Recent
+    </button>
+  </div>
+  <span *ngIf="isGenerating" class="float-sm-right">
+    Generating...
+  </span>
+</div>
