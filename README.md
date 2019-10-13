@@ -9,6 +9,7 @@ For this assignment, I decided to develop a MVP for a text generation webtool wh
 ## Use Case for the MVP
 
 My use case for the MVP was to provide a service which supplies AI-generated transcripts of entirely new episodes of "Star Trek: The Next Generation" to user.
+For example this could be used for persons in the creative industry to simply generate proposals and prompts for writing.
 
 A demo video is available on YouTube.
 
@@ -102,6 +103,7 @@ This is a rough outline of the steps necessary to build the whole project. This 
 Because Google OAuth is used for the user authentication flow, settings like `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` and `JWT_SECRET_KEY` need to be adjusted in the backend configuration file `packages/backend/development.env`.
 
 If you are not running on `localhost`, the host setting needs to be changes as well in both the backend configuration file `packages/backend/development.env` and the corresponding frontend environment file `frontend/src/environments/environment.ts`.
+Also this is where the Stripe key must be set.
 
 ### 4. Build & Run Docker Image
 
@@ -119,4 +121,4 @@ By default, this will start an HTTP server providing an API and serve the fronte
 
 ## License
 
-The trained model is available under the terms of the **MIT** license, see [LICENSE](./LICENSE) for details.
+This work is available under the terms of the **MIT** license, see [LICENSE](./LICENSE) for details.
