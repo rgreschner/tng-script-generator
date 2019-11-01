@@ -43,6 +43,14 @@ export class GeneratorComponent {
   }
 
   /**
+   * Prepare & apply generation result.
+   * @param generationResult Generation result from service.
+   */
+  private applyGenerationResult(generationResult: any) {
+    this.generationResult = generationResult;
+  }
+
+  /**
    * Load recently generated script for display.
    */
   public async loadRecentlyGenerated() {
@@ -55,7 +63,7 @@ export class GeneratorComponent {
       return;
     }
     const generationResult: any = await this.scriptGeneratorService.getRecentlyGenerated();
-    this.generationResult = generationResult;
+    this.applyGenerationResult(generationResult);
   }
 
   /**
@@ -101,7 +109,7 @@ export class GeneratorComponent {
       const generationResult: any = await this.scriptGeneratorService.getScriptById(
         scriptId
       );
-      this.generationResult = generationResult;
+      this.applyGenerationResult(generationResult);
       this.isDisabled = false;
     } catch (err) {
       // Pretty generic error handling.
