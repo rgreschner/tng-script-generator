@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -8,6 +8,7 @@ import { ScriptRepository } from './script-generator/script.repository';
 import { ConfigModule } from './config/config.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { MongoConnectionService } from './shared/mongo-connection.service';
 
 const staticRootPath = join(process.cwd(), 'public');
 
@@ -20,6 +21,17 @@ const staticRootPath = join(process.cwd(), 'public');
     }),
   ],
   controllers: [AppController, ScriptGeneratorController],
-  providers: [AppService, ScriptGeneratorService, ScriptRepository],
+  providers: [
+    AppService,
+    MongoConnectionService,
+    ScriptGeneratorService,
+    ScriptRepository,
+  ],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  constructor(private mongoConnectionService: MongoConnectionService) {}
+
+  async onModuleInit() {
+    await this.mongoConnectionService.initialize();
+  }
+}

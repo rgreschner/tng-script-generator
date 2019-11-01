@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as shell from 'shelljs';
 import { ScriptRepository } from './script.repository';
 import { ConfigService } from '../config/config.service';
+import { DISCLAIMER } from './disclaimer.const';
 
 /**
  * Promisify shell.exec for async.
@@ -111,7 +112,10 @@ export class ScriptGeneratorService {
     };
     const allOutput = execResult.stdout as string;
     if (!hasErrorStatusCode) {
-      const scriptText = this.cleanGeneratedScript(allOutput);
+      const scriptText = [
+        DISCLAIMER,
+        this.cleanGeneratedScript(allOutput),
+      ].join('\n\n');
       generationResult = {
         ...generationResult,
         scriptText,
