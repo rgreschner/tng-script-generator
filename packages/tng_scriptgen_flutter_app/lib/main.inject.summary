@@ -1,0 +1,69 @@
+{
+  "asset": "asset:tng_scriptgen_flutter_app/lib/main.dart",
+  "summary": {
+    "injector": [
+      {
+        "name": "Main",
+        "providers": [
+          {
+            "name": "app",
+            "kind": "getter",
+            "injectedType": {
+              "lookupKey": {
+                "root": "asset:tng_scriptgen_flutter_app/lib/main.dart#MyApp",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            "singleton": false,
+            "asynchronous": false,
+            "dependencies": []
+          }
+        ],
+        "modules": []
+      }
+    ],
+    "module": [],
+    "injectable": [
+      {
+        "name": "MyApp",
+        "constructor": {
+          "name": "",
+          "kind": "constructor",
+          "injectedType": {
+            "lookupKey": {
+              "root": "asset:tng_scriptgen_flutter_app/lib/main.dart#MyApp",
+              "qualifier": null
+            },
+            "isProvider": false
+          },
+          "singleton": false,
+          "asynchronous": false,
+          "dependencies": [
+            {
+              "lookupKey": {
+                "root": "asset:tng_scriptgen_flutter_app/lib/services/script_repository.dart#ScriptRepository",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            {
+              "lookupKey": {
+                "root": "asset:tng_scriptgen_flutter_app/lib/services/script_sync_service.dart#ScriptSyncService",
+                "qualifier": null
+              },
+              "isProvider": false
+            },
+            {
+              "lookupKey": {
+                "root": "asset:tng_scriptgen_flutter_app/lib/services/script_generator_api_client.dart#ScriptGeneratorApiClient",
+                "qualifier": null
+              },
+              "isProvider": false
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

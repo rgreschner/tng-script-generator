@@ -1,0 +1,26 @@
+{
+  "asset": "asset:tng_scriptgen_flutter_app/lib/services/script_repository.dart",
+  "summary": {
+    "injector": [],
+    "module": [],
+    "injectable": [
+      {
+        "name": "ScriptRepository",
+        "constructor": {
+          "name": "",
+          "kind": "constructor",
+          "injectedType": {
+            "lookupKey": {
+              "root": "asset:tng_scriptgen_flutter_app/lib/services/script_repository.dart#ScriptRepository",
+              "qualifier": null
+            },
+            "isProvider": false
+          },
+          "singleton": true,
+          "asynchronous": false,
+          "dependencies": []
+        }
+      }
+    ]
+  }
+}

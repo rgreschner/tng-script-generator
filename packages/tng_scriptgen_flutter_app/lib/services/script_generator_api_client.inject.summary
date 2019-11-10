@@ -1,0 +1,26 @@
+{
+  "asset": "asset:tng_scriptgen_flutter_app/lib/services/script_generator_api_client.dart",
+  "summary": {
+    "injector": [],
+    "module": [],
+    "injectable": [
+      {
+        "name": "ScriptGeneratorApiClient",
+        "constructor": {
+          "name": "",
+          "kind": "constructor",
+          "injectedType": {
+            "lookupKey": {
+              "root": "asset:tng_scriptgen_flutter_app/lib/services/script_generator_api_client.dart#ScriptGeneratorApiClient",
+              "qualifier": null
+            },
+            "isProvider": false
+          },
+          "singleton": true,
+          "asynchronous": false,
+          "dependencies": []
+        }
+      }
+    ]
+  }
+}
