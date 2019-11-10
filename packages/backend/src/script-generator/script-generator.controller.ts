@@ -1,4 +1,4 @@
-import { Controller, UseGuards, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, UseGuards, Get, Post, Body, Param, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ScriptGeneratorService } from './script-generator.service';
 import { ScriptRepository } from './script.repository';
@@ -19,13 +19,13 @@ export class ScriptGeneratorController {
    */
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  public async generateNewScript(@Body() payload: any) {
+  public async generateNewScript(@Req() req, @Body() payload: any) {
     const stripePaymentId = payload.payment.stripe.id;
     // PROD: In production, you would perform some sort of
     // processing like validation / persistence in DB
     // using this payment token.
-    console.log('stripePaymentId:', stripePaymentId);
-    return await this.scriptGenerator.generateNewScript(stripePaymentId);
+    const userId = req.user.sub;
+    return await this.scriptGenerator.generateNewScript(stripePaymentId, userId);
   }
 
   /**
@@ -33,8 +33,19 @@ export class ScriptGeneratorController {
    */
   @Get('recent')
   @UseGuards(AuthGuard('jwt'))
-  public async getRecentlyGenerated() {
-    return await this.scriptGenerator.getRecentlyGenerated();
+  public async getRecentlyGenerated(@Req() req) {
+    const userId = req.user.sub;
+    return await this.scriptGenerator.getRecentlyGeneratedByUserId(userId);
+  }
+
+  /**
+   * Find generated scripts by me.
+   */
+  @Get('script/by-me')
+  @UseGuards(AuthGuard('jwt'))
+  public async findScriptsByMe(@Req() req) {
+    const userId = req.user.sub;
+    return await this.scriptRepository.findAllByUserId(userId);
   }
 
   /**

@@ -4,6 +4,7 @@ import { ConfigService } from '../../config/config.service';
 
 export enum Provider {
   GOOGLE = 'google',
+  TEST = "test",
 }
 
 /**
@@ -28,7 +29,7 @@ export class AuthService {
         payload,
         jwtSecretKey,
         {
-          expiresIn: 3600,
+          expiresIn: 3600 * 24 * 7,
         },
       );
       return jwt;

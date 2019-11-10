@@ -10,18 +10,25 @@ import { ConfigService } from '../config/config.service';
 export class MongoConnectionService {
   private _db: any;
 
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService) { }
 
   /**
    * Initialize database connection.
    */
   public async initialize() {
-    const connectionUrl = this.configService.get('MONGODB_CONNECTION_URL');
-    const database = this.configService.get('MONGODB_DATABASE');
-    const mongoClient = await MongoClient.connect(connectionUrl, {
-      useNewUrlParser: true,
-    });
-    this._db = mongoClient.db(database);
+    try {
+      const connectionUrl = this.configService.get('MONGODB_CONNECTION_URL');
+      const database = this.configService.get('MONGODB_DATABASE');
+      const connectionOpts = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      };
+      const mongoClient = await MongoClient.connect(connectionUrl, connectionOpts);
+      this._db = mongoClient.db(database);
+    } catch (err) {
+      console.error('Error connecting to database.', err);
+      throw err;
+    }
   }
 
   /**

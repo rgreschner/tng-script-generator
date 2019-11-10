@@ -25,7 +25,6 @@ const execAsync = (...args) =>
  */
 @Injectable()
 export class ScriptGeneratorService {
-  private _recentlyGeneratedId: string;
 
   constructor(
     private readonly scriptRepository: ScriptRepository,
@@ -59,14 +58,18 @@ export class ScriptGeneratorService {
   /**
    * Start generation of new script.
    */
-  public async generateNewScript(id: string) {
+  public async generateNewScript(stripeId: string, userId: string) {
+
     // PROD: For production quality, this
     // method should put the generation request into a
     // proper job queue for scalability.
     const startTime = new Date().getTime();
-    console.log(`Generating script with id '${id}'.`);
+    const uuidv4 = require('uuid/v4');
+    const id = uuidv4();
+    console.log(`Generating script with id '${id}', stripe id '${stripeId}'.`);
     const generationStartResult = {
       _id: id,
+      userId,
       status: 'started',
       startTime,
     };
@@ -74,7 +77,7 @@ export class ScriptGeneratorService {
     // Asynchronously start script generation
     // in the background.
     setImmediate(async () => {
-      await this.generateNewScriptTask(id, startTime);
+      await this.generateNewScriptTask(id, userId, startTime);
     });
     // Return reference on started
     // script generation job with id.
@@ -85,7 +88,7 @@ export class ScriptGeneratorService {
    * Generate new script using Python
    * generator script in background.
    */
-  private async generateNewScriptTask(id: string, startTime: number) {
+  private async generateNewScriptTask(id: string, userId: string, startTime: number) {
     // Navigate to script generator working directory
     // and go Python on it.
     shell.cd(this.getScriptGenWorkingDirectory());
@@ -105,6 +108,7 @@ export class ScriptGeneratorService {
     );
     let generationResult: any = {
       _id: id,
+      userId,
       status,
       startTime,
       endTime,
@@ -127,13 +131,12 @@ export class ScriptGeneratorService {
       };
     }
     await this.scriptRepository.save(generationResult);
-    this._recentlyGeneratedId = generationResult._id;
   }
 
   /**
-   * Get recently generated script.
+   * Get recently generated script by user id.
    */
-  public async getRecentlyGenerated() {
-    return this.scriptRepository.findOneById(this._recentlyGeneratedId);
+  public async getRecentlyGeneratedByUserId(userId: string) {
+    return this.scriptRepository.findOneRecentByUserId(userId);
   }
 }
