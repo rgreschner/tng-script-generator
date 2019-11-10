@@ -1,10 +1,12 @@
-# Make Money with Machine Learning Course by Siraj Raval - Midterm Assignment: TNG Script Generator
+# Make Money with Machine Learning Course by Siraj Raval - Final Assignment: TNG Script Generator
 
 ## Introduction
 
-This repository contains my midterm assignment of Make Money with Machine Learning Course by Siraj Raval.
+This repository contains my final assignment of Make Money with Machine Learning Course by Siraj Raval.
 
 For this assignment, I decided to develop a MVP for a text generation webtool which lets users generate episode scripts for a television show, in this particular case for "Star Trek: The Next Generation".
+
+The final specific part is the implementation of a mobile app using Flutter and necessary changes in the backend logic to support this.
 
 This was also recently featured in Siraj's [Machine Learning App Examples](https://www.youtube.com/watch?v=__ByCy0PKKI) Video on YouTube. I feel honored and appreciate it!
 
@@ -39,7 +41,7 @@ The basic user interaction is like this:
 
 For the MVP the following limitations are in place:
 
-* simplistic user management using Google OAuth and JWT, e.g. no user sign-up
+* simplistic user management using Google OAuth and JWT, e.g. no user sign-up => sign-up and simple login implemented for mobile app
 * simplistic UI/UX in the style of KISS (Keep It Simple Stupid), I'm not going designer on this
 * no persistence of generated scripts for now, but the backend is prepared to support a proper database instead of an in-memory mock datastore by using the Repository/DAO pattern whenever necessary
 * no scalability, especially in the script generation process (for the MVP this is done using a simple Python script whereas in a full blown production environment, dedicated microservices would perform the script generation tasks via job queue)
@@ -122,6 +124,18 @@ docker run -d -p 3000:3000 --name siraj-midterm siraj-midterm
 ```
 
 By default, this will start an HTTP server providing an API and serve the frontend at [http://localhost:3000](http://localhost:3000).
+
+### 5. Flutter App
+
+For the final, I decided to implement a mobile app in Flutter.
+
+App-specific use cases are:
+
+* user registration and login
+* script generation screen with mocked credit-card input
+* download of generated scripts for offline use as the primary use case for the app
+
+The project files reside in the subdirectory `packages/tng_scriptgen_flutter_app` and can be opened in Android Studio with installed Flutter and Dart extensions.
 
 ## License
 
