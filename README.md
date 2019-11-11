@@ -135,6 +135,18 @@ App-specific use cases are:
 * script generation screen with mocked credit-card input
 * download of generated scripts for offline use as the primary use case for the app
 
+This is the login page of the app.
+
+![Flutter App Login](./doc/img/flutter-app-login.png)
+
+After login, a dashboard with more options appears.
+
+![Flutter App Dashboard](./doc/img/flutter-app-dashboard.png)
+
+The script list allows the user to download generaed scripts for offline use.
+
+![Flutter App Script List](./doc/img/flutter-app-script-list.png)
+
 The project files reside in the subdirectory `packages/tng_scriptgen_flutter_app` and can be opened in Android Studio with installed Flutter and Dart extensions.
 
 ## License
