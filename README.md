@@ -64,7 +64,9 @@ For data preparation, I wrote a simple script which concatenates all episodes of
 This concatenated corpus was then fed into the Jupyter Notebook [Train a GPT-2 Text-Generating Model w/ GPU For Free](https://colab.research.google.com/drive/1VLG8e7YSEwypxU-noRNhsv5dW4NfTGce) by @minimaxir for doing transfer learning running on Google Colab.
 The training process for the smaller GPT-2 model took about 4 hours, for details of the process see [How To Make Custom AI-Generated Text With GPT-2](https://minimaxir.com/2019/09/howto-gpt2).
 
-The trained model is supplied in a [separate repository on GitHub](https://github.com/rgreschner/siraj-make-money-with-machine-learning-midterm-tng-scriptgen-data) and referenced in this project repository as Git submodule.
+~~The trained model is supplied in a [separate repository on GitHub](https://github.com/rgreschner/siraj-make-money-with-machine-learning-midterm-tng-scriptgen-data) and referenced in this project repository as Git submodule.~~
+*Note:* I had to disable the data repo on GitHub due to Git LFS quota restrictions, I'm looking into another option to supply it for download!
+If you got any ideas, feel free to drop me a note as issue, thx :)
 
 #### 3. Implementation of the Backend and Script Generator
 
