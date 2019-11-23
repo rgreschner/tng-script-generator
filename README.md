@@ -6,6 +6,8 @@ This repository contains my midterm assignment of Make Money with Machine Learni
 
 For this assignment, I decided to develop a MVP for a text generation webtool which lets users generate episode scripts for a television show, in this particular case for "Star Trek: The Next Generation".
 
+This was also recently featured in Siraj's [Machine Learning App Examples](https://www.youtube.com/watch?v=__ByCy0PKKI) Video on YouTube. I feel honored and appreciate it!
+
 ## Use Case for the MVP
 
 My use case for the MVP was to provide a service which supplies AI-generated transcripts of entirely new episodes of "Star Trek: The Next Generation" to user.
