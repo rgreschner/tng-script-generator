@@ -1,2 +1,2 @@
 gpt-2-simple==0.6
-tensorflow==1.14
+tensorflow==2.7.2
